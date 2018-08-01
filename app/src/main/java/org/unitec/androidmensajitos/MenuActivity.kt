@@ -25,6 +25,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var estatus = Estatus()
     var mensaje=Mensaje()
     var mensajes=ArrayList<Mensaje>();
+    var mensajitos: Array<Mensaje>? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -189,7 +191,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             val maper = ObjectMapper()
             val respuesta = restTemplate.getForObject(url2,  String::class.java)
-            mensajes = maper.readValue(respuesta, object : TypeReference<ArrayList<Mensaje>>(){})
+        //    mensajes = maper.readValue(respuesta, object : TypeReference<ArrayList<Mensaje>>(){})
+            mensajitos = maper.readValue(respuesta, Array<Mensaje>::class.java)
 
 
             println("DESPUES DE REST");
