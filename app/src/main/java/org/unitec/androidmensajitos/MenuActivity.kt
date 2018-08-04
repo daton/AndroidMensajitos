@@ -179,7 +179,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onPostExecute(result)
 
             Toast.makeText(applicationContext,
-                    "Registros "+mensajes.size,Toast.LENGTH_LONG).show();
+                    "Registros "+mensajitos?.size,Toast.LENGTH_LONG).show();
         }
 
         override fun doInBackground(vararg p0: Void?): Void? {
@@ -236,4 +236,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //NO enviamos nada en el caso de buscar todos
         }
     }
+
+
 }
