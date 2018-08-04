@@ -195,7 +195,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             mensajitos = maper.readValue(respuesta, Array<Mensaje>::class.java)
 
 
-            println("DESPUES DE REST");
             return null
         }
 
@@ -211,7 +210,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onPostExecute(result)
 
             Toast.makeText(applicationContext,
-                    "Registros "+mensajes.size,Toast.LENGTH_LONG).show();
+                   "El mensaje es $mensaje.cuerpo",Toast.LENGTH_LONG).show();
         }
 
         override fun doInBackground(vararg p0: Void?): Void? {
@@ -223,7 +222,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             val maper = ObjectMapper()
             val respuesta = restTemplate.getForObject(url2,  String::class.java)
-            mensaje = maper.readValue(respuesta, object : TypeReference<Mensaje>(){})
+            mensaje = maper.readValue(respuesta, Mensaje::class.java)
+
 
 
             println("DESPUES DE REST");
@@ -233,7 +233,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         override fun onPreExecute() {
             super.onPreExecute()
-            //NO enviamos nada en el caso de buscar todos
+            //Preparamos el id
         }
     }
 
